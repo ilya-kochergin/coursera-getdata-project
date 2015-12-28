@@ -8,10 +8,10 @@ activity combination.
 
 The data colums are as follows:
 
+
   SubjectId (integer): the subject id
 
   Activity (factor): the activity being performed, one of WALKING,
-
     WALKING\_UPSTAIRS, WALKING\_DOWNSTAIRS, SITTING, STANDING, LAYING
 
      1	  tBodyAcc.mean.X (numeric): average of corresponding feature 
@@ -146,7 +146,6 @@ The data colums are as follows:
 
     66	  fBodyBodyGyroJerkMag.std (numeric): average of corresponding feature 
 
-    67	 
 
 ## Notes on Feature Units
 
