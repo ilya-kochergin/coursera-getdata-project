@@ -24,19 +24,28 @@ A number of steps are applied to the "UCI HAR Dataset" as follows:
 The dataset has 561 feature variables, however we are only interested in
 the 66 that represent the mean() and std() of observations.  The 
 "UCI HAR Dataset/features.txt" file provides a listing of all 561 variables
-along with the column index.  The standard unix grep tool was used to
-extract the variables of interest:
+along with the column index. 
 
-> grep mean\(\) features.txt > extractFeatures.txt
+To extract relevant names function grepl  was used:
 
-> grep std\(\) features.txt >> extractFeatures.txt
+> relevant.features  <-   read.table(file.path(data.dir,"features.txt"),header=FALSE,col.names = > c("num","name"),as.is=TRUE) %>%
+>  filter(grepl(pattern="\\Wmean\\W|\\Wstd\\W",name)) %>%
+>  transform(name=correct_feature_names(name))
 
-The extractFeatures.txt was then manually edited to rename the features:
 
- * replace "-" -> "."
- * replace "()" -> ""
 
+
+The standard function  gsub()  was used to
+corrent the variable names
+
+> # auxiliary function correct_feature_names() replaces special characters
+> correct_feature_names <- 
+>  function (name)  gsub("-",".",     gsub("\\(\\)","",name)) 
 So, for example, "tBodyGyro-mean()-X" becomes "tBodyGyro.mean.X".
+  
+  
+
+
 
 The saved extractFeatures.txt is then read by the main R script in order
 to subset the feature data and name the columns.
