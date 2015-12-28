@@ -38,17 +38,13 @@ To extract relevant names function grepl  was used:
 The standard function  gsub()  was used to
 corrent the variable names
 
-> # auxiliary function correct_feature_names() replaces special characters
+Auxiliary function correct_feature_names() replaces special characters
+
 > correct_feature_names <- 
 >  function (name)  gsub("-",".",     gsub("\\(\\)","",name)) 
+
 So, for example, "tBodyGyro-mean()-X" becomes "tBodyGyro.mean.X".
   
-  
-
-
-
-The saved extractFeatures.txt is then read by the main R script in order
-to subset the feature data and name the columns.
 
 ### Tidying UCI Data
 
@@ -65,9 +61,9 @@ Each individual data set is loaded and modified as follows:
 
 ### Extracting (Filtering)  Feature Variables
 
-The extractFeatures.txt file (described above) was used to extract a
+relevant.features dataframe was used to extract a
 subset of the variables present in the UCI dataset.  Each row in the
-extractFeatures.txt file has a column number and a variable name.  Each of
+dataframe has a column number and a variable name.  Each of
 these columns was extracted from the UCI dataset features and the
 corresponding variable name applied to the column.
 
